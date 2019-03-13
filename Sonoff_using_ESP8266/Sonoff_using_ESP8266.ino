@@ -69,7 +69,8 @@ void setup() {
   Serial.println();
 
   Serial.println("WiFi connected");
-  Serial.println("IP address: "); Serial.println(WiFi.localIP());
+  Serial.println("IP address: "); 
+  Serial.println(WiFi.localIP());
 
   pinMode(relay,OUTPUT);
 
@@ -90,10 +91,10 @@ void loop() {
 
   Adafruit_MQTT_Subscribe *subscription;
   while ((subscription = mqtt.readSubscription(1))) {
-    if (subscription == &onoffbutton) {
+    if (subscription == & onoffbutton) {
       Serial.print(F("Got: "));
-      Serial.println((char *)onoffbutton.lastread);
-      uint16_t state = atoi((char *)onoffbutton.lastread);
+      Serial.println((char *) onoffbutton.lastread);
+      uint16_t state = atoi((char *) onoffbutton.lastread);
       digitalWrite(relay,state);
     }
   }
